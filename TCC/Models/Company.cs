@@ -27,6 +27,8 @@ namespace TCC.Models
 
         public Category Category { get; set; }
 
+        public int CategoryId { get; set; }
+
 
     }
 }
