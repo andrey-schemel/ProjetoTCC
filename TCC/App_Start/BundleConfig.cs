@@ -23,7 +23,7 @@ namespace TCC
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-theme-tcc.css",
                       "~/Content/site.css"));
         }
     }

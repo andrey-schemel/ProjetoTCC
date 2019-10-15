@@ -14,14 +14,12 @@ namespace TCC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Companies
         public ActionResult Index()
         {
             var companies = db.Companies.Include(c => c.Category);
             return View(companies.ToList());
         }
 
-        // GET: Companies/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,16 +34,12 @@ namespace TCC.Controllers
             return View(company);
         }
 
-        // GET: Companies/Create
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
-        // POST: Companies/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Cnpj,State,City,Street,Cep,Email,Phone,CategoryId")] Company company)
@@ -61,7 +55,6 @@ namespace TCC.Controllers
             return View(company);
         }
 
-        // GET: Companies/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +70,6 @@ namespace TCC.Controllers
             return View(company);
         }
 
-        // POST: Companies/Edit/5
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Cnpj,State,City,Street,Cep,Email,Phone,CategoryId")] Company company)
@@ -94,7 +84,6 @@ namespace TCC.Controllers
             return View(company);
         }
 
-        // GET: Companies/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +98,6 @@ namespace TCC.Controllers
             return View(company);
         }
 
-        // POST: Companies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
