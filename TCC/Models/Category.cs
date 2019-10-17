@@ -12,7 +12,7 @@ namespace TCC.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Nome da Categoria")]
+        [Display(Name = "Categoria do Serviço Prestado")]
         public string Name { get; set; }
 
         [Required]

@@ -35,8 +35,9 @@ namespace TCC.Models
 
         [Display(Name = "Categoria dos Serviços Prestados")]
         public Category Category { get; set; }
+
         [Required]
-        [Display(Name = "Categoria dos Serviços Prestados")]
+        [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
 
 

@@ -14,12 +14,39 @@ namespace TCC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+
+       
+        [AllowAnonymous]
+        public ActionResult Index(string category, string searchString)
         {
-            var companies = db.Companies.Include(c => c.Category);
-            return View(companies.ToList());
+            var CategoryLst = new List<string>();
+
+            var CategoryQry = from c in db.Companies
+                              orderby c.Phone
+                              select c.Phone;
+
+            CategoryLst.AddRange(CategoryLst.Distinct());
+            ViewBag.category = new SelectList(CategoryLst);
+
+            var companies = from c in db.Companies
+                         select c;
+
+            companies = db.Companies.Include(c => c.Category);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                companies = companies.Where(c => c.Name.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                companies = companies.Where(x => x.Phone == category);
+            }
+
+            return View(companies);
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,6 +61,7 @@ namespace TCC.Controllers
             return View(company);
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
@@ -42,6 +70,7 @@ namespace TCC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,Cnpj,State,City,Street,Cep,Email,Phone,CategoryId")] Company company)
         {
             if (ModelState.IsValid)
@@ -55,6 +84,7 @@ namespace TCC.Controllers
             return View(company);
         }
 
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -72,6 +102,7 @@ namespace TCC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Name,Cnpj,State,City,Street,Cep,Email,Phone,CategoryId")] Company company)
         {
             if (ModelState.IsValid)
@@ -84,6 +115,7 @@ namespace TCC.Controllers
             return View(company);
         }
 
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -100,6 +132,7 @@ namespace TCC.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Company company = db.Companies.Find(id);
@@ -116,5 +149,8 @@ namespace TCC.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
     }
 }

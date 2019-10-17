@@ -14,13 +14,13 @@ namespace TCC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Categories
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Categories.ToList());
         }
 
-        // GET: Categories/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,17 +35,16 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // GET: Categories/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,Description")] Category category)
         {
             if (ModelState.IsValid)
@@ -58,7 +57,7 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // GET: Categories/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,11 +72,10 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Name,Description")] Category category)
         {
             if (ModelState.IsValid)
@@ -89,7 +87,7 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // GET: Categories/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,9 +102,10 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // POST: Categories/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);

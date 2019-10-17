@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201910130306049_MigrationTCC2.Designer.cs">
       <DependentUpon>201910130306049_MigrationTCC2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910160225099_MigrationTCC4.cs" />
+    <Compile Include="Migrations\201910160225099_MigrationTCC4.Designer.cs">
+      <DependentUpon>201910160225099_MigrationTCC4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -210,6 +214,7 @@
     <Compile Include="ViewModels\CompanyFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\company.png" />
     <Content Include="Content\bootstrap-theme-tcc.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -302,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910130306049_MigrationTCC2.resx">
       <DependentUpon>201910130306049_MigrationTCC2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910160225099_MigrationTCC4.resx">
+      <DependentUpon>201910160225099_MigrationTCC4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
