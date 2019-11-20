@@ -19,14 +19,14 @@ namespace TCC.Controllers
         [AllowAnonymous]
         public ActionResult Index(string category, string searchString)
         {
-            var CategoryLst = new List<string>();
+            var categoryLst = new List<string>();
 
-            var CategoryQry = from c in db.Companies
-                              orderby c.Phone
-                              select c.Phone;
+            var categoryQry = from c in db.Companies
+                           orderby c.Category.Name
+                           select c.Category.Name;
 
-            CategoryLst.AddRange(CategoryLst.Distinct());
-            ViewBag.category = new SelectList(CategoryLst);
+            categoryLst.AddRange(categoryQry.Distinct());
+            ViewBag.category = new SelectList(categoryLst);
 
             var companies = from c in db.Companies
                          select c;
@@ -37,14 +37,15 @@ namespace TCC.Controllers
             {
                 companies = companies.Where(c => c.Name.Contains(searchString));
             }
-
             if (!string.IsNullOrEmpty(category))
             {
-                companies = companies.Where(x => x.Phone == category);
+                companies = companies.Where(x => x.Category.Name.Contains(category));
             }
-
+           
             return View(companies);
+
         }
+
 
         [AllowAnonymous]
         public ActionResult Details(int? id)

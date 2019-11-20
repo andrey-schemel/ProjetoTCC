@@ -203,6 +203,18 @@
     <Compile Include="Migrations\201910160225099_MigrationTCC4.Designer.cs">
       <DependentUpon>201910160225099_MigrationTCC4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910170321034_CreateUsers.cs" />
+    <Compile Include="Migrations\201910170321034_CreateUsers.Designer.cs">
+      <DependentUpon>201910170321034_CreateUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910170325171_CreateUsers1.cs" />
+    <Compile Include="Migrations\201910170325171_CreateUsers1.Designer.cs">
+      <DependentUpon>201910170325171_CreateUsers1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910170329199_CreateUsers2.cs" />
+    <Compile Include="Migrations\201910170329199_CreateUsers2.Designer.cs">
+      <DependentUpon>201910170329199_CreateUsers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -310,6 +322,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910160225099_MigrationTCC4.resx">
       <DependentUpon>201910160225099_MigrationTCC4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910170321034_CreateUsers.resx">
+      <DependentUpon>201910170321034_CreateUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910170325171_CreateUsers1.resx">
+      <DependentUpon>201910170325171_CreateUsers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910170329199_CreateUsers2.resx">
+      <DependentUpon>201910170329199_CreateUsers2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

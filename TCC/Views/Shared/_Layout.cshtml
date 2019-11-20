@@ -23,6 +23,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                    <li>@Html.ActionLink("Procurar Empresas", "Index", "Companies")</li>
+                    <li>@Html.ActionLink("Categorias de Serviços", "Index", "Categories")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -30,7 +32,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr /
+        <hr />-
     </div>
 
     @Scripts.Render("~/bundles/jquery")
